@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Depayit - แพลตฟอร์ม"ซื้อ-ขาย"ผ่านตัวกลาง เจ้าแรกในไทย</title>
+    <meta name="description" content="Depayit โล่ป้องกันภัยไซเบอร์ ตัวกลางถือเงิน P2P Soft Escrow รูปแบบ Agency-Agreement ผู้ซื้อได้ของ-ผู้ขายได้เงิน">
+    <meta name="keywords" content="ตัวกลางถือเงิน, ระบบ Escrow, ซื้อขายปลอดภัย, กันโกง, Depayit, Agency Agreement">
+
+    <meta property="og:title" content="Depayit - ซื้อขายมั่นใจ เงินไม่หาย ของตรงปก">
+    <meta property="og:description" content="https://drive.google.com/file/d/14cEccckldKt2vS8fAuRBmpYr8QXeFKf1/view?usp=drivesdk">
+    <meta property="og:type" content="website">
+
+    <link rel="icon" href="Depayit.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="Depayit.ico" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                fontFamily: {
+                    sans: ['Prompt', 'sans-serif'],
+                },
+                extend: {
+                    colors: {
+                        brandBlue: '#2563EB',
+                        brandGreen: '#10B981',
+                        brandDark: '#0F172A',
+                        brandRed: '#EF4444',
+                    },
+                    spacing: {
+                        '128': '32rem',
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        html { 
+            scroll-behavior: smooth; 
+            scroll-padding-top: 6rem;
+        }
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(226, 232, 240, 0.8);
+        }
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+        .animate-float {
+            animation: float 6s ease-in-out infinite;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans antialiased relative selection:bg-brandBlue selection:text-white">
+
+    <nav class="fixed w-full glass-nav z-50 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-6 lg:px-12">
+            <div class="flex justify-between h-20 items-center">
+                <a href="#" class="flex items-center gap-3 group">
+                    <img src="Depayit.ico" alt="Depayit Logo" class="w-10 h-10 rounded-xl shadow-lg shadow-brandBlue/20 transform group-hover:scale-105 transition">                     
+                    <span class="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-brandBlue to-brandGreen tracking-tight">
+                        Depayit
+                    </span>
+                </a>
+
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#about" class="text-slate-600 hover:text-brandBlue font-medium transition hover:bg-slate-50 px-3 py-2 rounded-lg">รู้จักเรา</a>
+                    <a href="#how-it-works" class="text-slate-600 hover:text-brandBlue font-medium transition hover:bg-slate-50 px-3 py-2 rounded-lg">วิธีใช้งาน</a>
+                    <a href="#pricing" class="text-slate-600 hover:text-brandBlue font-medium transition hover:bg-slate-50 px-3 py-2 rounded-lg">ค่าธรรมเนียม</a>
+                    <a href="#features" class="text-slate-600 hover:text-brandBlue font-medium transition hover:bg-slate-50 px-3 py-2 rounded-lg">ความปลอดภัย</a>
+                    <button class="bg-brandBlue hover:bg-blue-700 text-white px-6 py-2.5 rounded-full font-bold shadow-lg shadow-brandBlue/30 transition hover:-translate-y-0.5 active:translate-y-0 flex items-center gap-2">
+                      ตรวจสอบสถานะ (TXID)
+                    </button>
+                </div>
+
+                <div class="md:hidden">
+                    <button id="mobile-menu-btn" class="text-slate-600 p-2 hover:bg-slate-100 rounded-xl transition">
+                        <i data-lucide="menu" class="w-7 h-7"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-slate-100 shadow-2xl absolute w-full z-40">
+            <div class="px-6 py-6 space-y-3">
+                <a href="#about" class="mobile-link block text-slate-600 font-medium py-3 px-4 hover:bg-slate-50 rounded-xl border border-transparent hover:border-slate-100 transition">รู้จักเรา</a>
+                <a href="#how-it-works" class="mobile-link block text-slate-600 font-medium py-3 px-4 hover:bg-slate-50 rounded-xl border border-transparent hover:border-slate-100 transition">วิธีใช้งาน</a>
+                <a href="#pricing" class="mobile-link block text-slate-600 font-medium py-3 px-4 hover:bg-slate-50 rounded-xl border border-transparent hover:border-slate-100 transition">ค่าธรรมเนียม</a>
+                <a href="#features" class="mobile-link block text-slate-600 font-medium py-3 px-4 hover:bg-slate-50 rounded-xl border border-transparent hover:border-slate-100 transition">ความปลอดภัย</a>
+                <button class="w-full bg-brandBlue text-white py-3.5 rounded-xl font-bold mt-4 shadow-lg shadow-brandBlue/20">สร้างรายการ</button>
+            </div>
+        </div>
+    </nav>
+
+    <section class="pt-36 pb-24 px-6 md:px-12 relative overflow-hidden">
+        <div class="absolute top-0 right-0 w-3/4 h-full bg-gradient-to-bl from-blue-50/50 to-transparent -z-10 opacity-60 pointer-events-none"></div>
+        <div class="absolute bottom-0 left-0 w-96 h-96 bg-emerald-50/50 rounded-full blur-3xl -z-10 opacity-70 pointer-events-none"></div>
+
+        <div class="max-w-7xl mx-auto text-center z-10 relative">
+            <div class="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-blue-50 text-brandBlue text-sm font-semibold mb-8 border border-blue-100 shadow-sm">
+                <i data-lucide="shield-check" class="w-4 h-4"></i>
+                 "P2P Soft Escrow" เจ้าแรกในไทย
+            </div>
+            
+            <h1 class="text-4xl md:text-6xl lg:text-7xl font-extrabold text-slate-900 tracking-tight mb-8 leading-[1.15]">
+                ซื้อขายของมือสองออนไลน์ <br class="hidden md:block" />
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-brandBlue to-brandGreen">
+                    "ไม่ต้องกลัวโดนโกง" อีกต่อไป
+                </span>
+            </h1>
+            
+            <p class="text-lg md:text-xl text-slate-600 max-w-2xl mx-auto mb-12 leading-relaxed">
+                ตัวกลางดูแลเงินค่าสินค้าระหว่าง"ผู้ซื้อ-ผู้ขาย"ภายใต้สัญญาตัวแทน (Agency Model) <br class="hidden md:block">
+                เงินจะถูกโอนให้ผู้ขาย <span class="text-slate-900 font-semibold bg-emerald-100 px-2 py-0.5 rounded">เมื่อคุณได้รับของแล้วเท่านั้น</span>
+            </p>
+
+            <div class="flex flex-col sm:flex-row gap-5 justify-center items-center">
+                <button class="w-full sm:w-auto px-10 py-4 bg-brandBlue hover:bg-blue-700 text-white rounded-full font-bold text-lg shadow-xl shadow-brandBlue/30 transition transform hover:-translate-y-1 flex items-center justify-center gap-2">
+                    <i data-lucide="link" class="w-5 h-5"></i>
+                    สร้างลิงก์ธุรกรรมเลย
+                </button>
+                <button onclick="toggleVideo()" class="w-full sm:w-auto px-10 py-4 bg-white hover:bg-slate-50 text-slate-700 border border-slate-200 rounded-full font-bold text-lg transition flex items-center justify-center gap-2 hover:border-brandGreen hover:text-brandGreen shadow-sm">
+                    <i data-lucide="play-circle" class="w-5 h-5"></i>
+                    ดูวิดีโอแนะนำ
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-24 bg-white relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-6 md:px-12"> <div class="grid md:grid-cols-2 gap-16 items-center">
+                <div class="order-2 md:order-1">
+                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-red-50 text-brandRed text-xs font-semibold mb-4 border border-red-100">
+                        <i data-lucide="alert-triangle" class="w-3 h-3"></i>
+                        วิกฤตภัยไซเบอร์ไทย 2022-2025
+                    </div>
+                    <h2 class="text-3xl lg:text-4xl font-bold text-slate-900 mb-6 leading-snug">
+                        ทำไมต้องเสี่ยง? <br>
+                        ในเมื่อสถิติน่ากลัวกว่าที่คุณคิด
+                    </h2>
+                    <p class="text-slate-600 mb-8 leading-relaxed text-lg">
+                        ปัจจุบันคนไทยถูกหลอกลวงจากมิจฉาชีพจนเกิดความเสียหายมหาศาล ข้อมูลปี 2022-2025 พบมูลค่าความเสียหายรวมกว่า <span class="text-brandRed font-bold bg-red-50 px-1 rounded">1 แสนล้านบาท</span>
+                    </p>
+                    <div class="bg-slate-50 p-6 rounded-2xl border border-slate-100 mb-8 hover:border-brandRed/20 transition">
+                        <div class="flex items-start gap-4">
+                            <div class="w-12 h-12 bg-white rounded-xl flex items-center justify-center text-brandRed shrink-0 shadow-sm border border-slate-100">
+                                <i data-lucide="shopping-cart" class="w-6 h-6"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-lg font-bold text-slate-800 mb-1">อันดับ 1 ตลอดกาล: "สั่งของแล้วไม่ได้ของ"</h4>
+                                <p class="text-slate-500 text-sm leading-relaxed">
+                                    คิดเป็น 40% ของความเสียหายทั้งหมด (ราว 4 หมื่นล้านบาท) เม็ดเงินเหล่านี้ควรหมุนเวียนในเศรษฐกิจ แต่กลับต้องสูญเสียไป
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-slate-600 font-medium border-l-4 border-brandBlue pl-4 py-1">
+                        ปัญหานี้รุนแรงขึ้นเรื่อยๆ แต่ยังขาดระบบแก้ไข... <br>
+                        <span class="text-brandBlue font-bold">Depayit จึงถือกำเนิดขึ้นเพื่อเป็น "โล่ป้องกัน" ให้คุณ</span>
+                    </p>
+                </div>
+
+                <div class="order-1 md:order-2 relative px-4 md:px-0">
+                    <div class="absolute inset-0 bg-gradient-to-tr from-red-50 to-orange-50 rounded-[2rem] transform rotate-3 scale-95 opacity-70 -z-10"></div>
+                    <div class="bg-white p-8 md:p-10 rounded-[2rem] shadow-xl border border-slate-100 relative z-10">
+                        <h3 class="text-xl font-bold text-slate-800 mb-8 text-center">มูลค่าความเสียหายจากการซื้อขายออนไลน์</h3>
+                        
+                        <div class="mb-8">
+                            <div class="flex justify-between text-sm mb-2 font-medium">
+                                <span class="text-slate-700">ซื้อของไม่ได้ของ</span>
+                                <span class="text-brandRed font-bold">40,000 ล้านบาท (40%)</span>
+                            </div>
+                            <div class="w-full bg-slate-100 rounded-full h-4 overflow-hidden">
+                                <div class="bg-brandRed h-4 rounded-full shadow-md shadow-red-200" style="width: 80%"></div>
+                            </div>
+                        </div>
+
+                        <div class="mb-6">
+                            <div class="flex justify-between text-sm mb-2 font-medium">
+                                <span class="text-slate-500">หลอกให้โอนเงิน</span>
+                                <span class="text-slate-400">รองลงมา</span>
+                            </div>
+                            <div class="w-full bg-slate-100 rounded-full h-4">
+                                <div class="bg-slate-300 h-4 rounded-full" style="width: 45%"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-8 pt-6 border-t border-slate-100 text-center">
+                            <p class="text-slate-400 text-xs">ข้อมูลอ้างอิง: สถิติอาชญากรรมทางเทคโนโลยี 2022-2025</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="py-24 bg-slate-50">
+        <div class="max-w-6xl mx-auto px-6 md:px-12"> <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mb-6">Depayit คืออะไร?</h2>
+                <p class="text-lg text-slate-600 max-w-3xl mx-auto leading-relaxed">
+                    เราคือเป็นแพลตฟอร์มตัวกลาง (P2P Soft Escrow) คอยกำกับดูแลธุรกรรมให้ระหว่างผู้ซื้อและผู้ขาย 
+                    ตามประมวลกฏหมายแพ่งและพาณิชย์ เราไม่ใช่ธนาคารและไม่เตะต้องเงินค่าสินค้าของผู้ใช้โดยตรงเพราะเรามีระบบ (Auto Release)
+                    การสั่งปล่อยเงินอัตโนมัติเมื่อครบเงื่อนไขตามที่ได้กำหนดไว้ และยังให้ความสำคัญมากๆในเรื่องความโปร่งใสและเป็นกลางดำเนินการในรูปแบบ"Agency-Agreement"
+                    เพื่อให้คู่ค้าโอนเงินและส่งมอบสินค้า ได้โดยมีตัวกลางทางเทคนิคที่จัดการสถานะและเงื่อนไขการปล่อยเงิน ใช้งานง่าย ปลอดภัย โปร่งใส ซื้อขายสะดวกสบาย
+                </p>
+        </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-white p-8 rounded-3xl shadow-sm border border-slate-100 hover:shadow-xl hover:-translate-y-1 transition duration-300 group">
+                    <div class="w-16 h-16 bg-blue-50 text-brandBlue rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition border border-blue-100"
+                        <i data-lucide="users" class="w-8 h-8"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-slate-800 text-center">Agency Service</h3>
+                    <p class="text-slate-500 text-sm leading-relaxed text-center">
+                        เราทำหน้าที่ในสถานะ "ตัวแทน" ระหว่างผู้ซื้อและผู้ขาย โดยได้รับมอบอำนาจในการตรวจสอบธุรกรรม จนกว่าจะจบกระบวนการ
+                    </p>
+                </div>
+
+                <div class="bg-white p-8 rounded-3xl shadow-sm border border-slate-100 hover:shadow-xl hover:-translate-y-1 transition duration-300 group">
+                    <div class="w-16 h-16 bg-green-50 text-brandGreen rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition border border-green-100">
+                        <i data-lucide="globe" class="w-8 h-8"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-slate-800 text-center">Anywhere, Anytime</h3>
+                    <p class="text-slate-500 text-sm leading-relaxed text-center">
+                       ใช้งานผ่าน Web Application บนเบราว์เซอร์ ไม่ต้องโหลดแอป ไม่ต้องสมัครสมาชิกให้ยุ่งยาก ใช้ได้กับทุก Social Media
+                    </p>
+                </div>
+
+                <div class="bg-white p-8 rounded-3xl shadow-sm border border-slate-100 hover:shadow-xl hover:-translate-y-1 transition duration-300 group">
+                    <div class="w-16 h-16 bg-purple-50 text-purple-600 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition border border-purple-100">
+                        <i data-lucide="gavel" class="w-8 h-8"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-slate-800 text-center">Dispute Protection</h3>
+                    <p class="text-slate-500 text-sm leading-relaxed text-center">
+                        มีบริการเปิดข้อพิพาท (Dispute) เพื่อความเป็นธรรม หากสินค้ามีปัญหา เราพร้อมดูแลและตรวจสอบหลักฐานให้ทุกเคส
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="how-it-works" class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-6 md:px-12">
+            <div class="text-center mb-20">
+                <h2 class="text-3xl font-bold text-slate-900 mb-4">ใช้งานง่าย แค่ 4 ขั้นตอน</h2>
+                <p class="text-slate-500">ออกแบบมาเพื่อการซื้อขายบน Social Media โดยเฉพาะ</p>
+            </div>
+
+            <div class="grid md:grid-cols-4 gap-12 md:gap-8 relative">
+                <div class="hidden md:block absolute top-10 left-[12%] right-[12%] h-0.5 bg-slate-100 -z-0"></div>
+
+                <div class="text-center relative z-10 group">
+                    <div class="w-20 h-20 mx-auto bg-white rounded-2xl flex items-center justify-center text-brandBlue mb-6 group-hover:bg-brandBlue group-hover:text-white transition duration-300 shadow-lg border border-slate-100">
+                        <i data-lucide="qr-code" class="w-8 h-8"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">1. สร้างรายการ</h3>
+                    <p class="text-sm text-slate-500 px-2 leading-relaxed">ผู้ขายหรือผู้ซื้อสร้างลิงก์ ระบุรายละเอียดสินค้าและราคา</p>
+                </div>
+
+                <div class="text-center relative z-10 group">
+                    <div class="w-20 h-20 mx-auto bg-white rounded-2xl flex items-center justify-center text-brandBlue mb-6 group-hover:bg-brandBlue group-hover:text-white transition duration-300 shadow-lg border border-slate-100">
+                        <i data-lucide="wallet" class="w-8 h-8"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">2. ชำระเงิน</h3>
+                    <p class="text-sm text-slate-500 px-2 leading-relaxed">ผู้ซื้อสแกนจ่าย เงินถูกพักไว้ที่บัญชีกลาง (Cashflow)</p>
+                </div>
+
+                <div class="text-center relative z-10 group">
+                    <div class="w-20 h-20 mx-auto bg-white rounded-2xl flex items-center justify-center text-brandBlue mb-6 group-hover:bg-brandBlue group-hover:text-white transition duration-300 shadow-lg border border-slate-100">
+                        <i data-lucide="truck" class="w-8 h-8"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">3. ส่งสินค้า</h3>
+                    <p class="text-sm text-slate-500 px-2 leading-relaxed">ผู้ขายส่งของและแจ้งเลข Tracking ในระบบเพื่อยืนยัน</p>
+                </div>
+
+                <div class="text-center relative z-10 group">
+                    <div class="w-20 h-20 mx-auto bg-white rounded-2xl flex items-center justify-center text-brandGreen mb-6 group-hover:bg-brandGreen group-hover:text-white transition duration-300 shadow-lg border border-emerald-100">
+                        <i data-lucide="check-circle-2" class="w-8 h-8"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">4. รับของ-รับเงิน</h3>
+                    <p class="text-sm text-slate-500 px-2 leading-relaxed">เมื่อผู้ซื้อได้รับของ ระบบจะโอนเงินให้ผู้ขายทันที</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="pricing" class="py-24 bg-slate-50">
+        <div class="max-w-5xl mx-auto px-6 md:px-12">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-slate-900 mb-4">ค่าธรรมเนียมที่เป็นธรรม</h2>
+                <p class="text-slate-500">คิดค่าบริการตามจริง โปร่งใส และคุ้มค่ากว่า Marketplace ทั่วไป</p>
+            </div>
+
+            <div class="bg-white rounded-[2rem] shadow-xl overflow-hidden border border-slate-100">
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left border-collapse min-w-[600px]">
+                        <thead>
+                            <tr class="bg-brandDark text-white">
+                                <th class="p-8 text-lg font-semibold border-b border-slate-700 w-1/3">ช่วงราคาสินค้า</th>
+                                <th class="p-8 text-lg font-semibold border-b border-slate-700 w-1/3">ค่าธรรมเนียม (%)</th>
+                                <th class="p-8 text-lg font-semibold border-b border-slate-700 w-1/3">ขั้นต่ำ - สูงสุด</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-slate-100 text-slate-700">
+                            <tr class="hover:bg-blue-50 transition cursor-default">
+                                <td class="p-8 font-medium">1 - 500 บาท</td>
+                                <td class="p-8 text-brandBlue font-bold">3.00%</td>
+                                <td class="p-8">10 บาท</td>
+                            </tr>
+                            <tr class="hover:bg-blue-50 transition cursor-default">
+                                <td class="p-8 font-medium">501 - 2,000 บาท</td>
+                                <td class="p-8 text-brandBlue font-bold">2.00%</td>
+                                <td class="p-8">15 บาท - 300 บาท</td>
+                            </tr>
+                            <tr class="hover:bg-blue-50 transition cursor-default">
+                                <td class="p-8 font-medium">2,001 - 10,000 บาท</td>
+                                <td class="p-8 text-brandBlue font-bold">1.50%</td>
+                                <td class="p-8">20 บาท - 800 บาท</td>
+                            </tr>
+                            <tr class="hover:bg-blue-50 transition cursor-default">
+                                <td class="p-8 font-medium">10,000 บาท ขึ้นไป</td>
+                                <td class="p-8 text-brandGreen font-bold">1.00%</td>
+                                <td class="p-8">50 บาท - 1,500 บาท</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="p-5 bg-slate-100 text-center text-sm text-slate-500 flex justify-center items-center gap-2">
+                    <i data-lucide="info" class="w-4 h-4"></i> ราคาดังกล่าวรวม VAT 7% เรียบร้อยแล้ว
+                </di
+            </div>
+        </div>
+    </section>
+
+    
+    <section id="features" class="py-24 bg-brandDark text-white relative overflow-hidden">
+        <div class="absolute top-0 left-0 w-64 h-64 bg-brandBlue rounded-full blur-3xl opacity-20 -translate-x-1/2 -translate-y-1/2"></div>
+        <div class="absolute bottom-0 right-0 w-96 h-96 bg-brandGreen rounded-full blur-3xl opacity-20 translate-x-1/3 translate-y-1/3"></div>
+        <div class="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
+            <div class="grid md:grid-cols-2 gap-20 items-center">
+                <div>
+                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-800 text-brandGreen text-xs font-semibold mb-6 border border-slate-700">
+                        <i data-lucide="shield" class="w-3 h-3"></i>
+                        World Class Security
+                    </div>
+                    <h2 class="text-3xl md:text-4xl font-bold mb-6 leading-snug">ความปลอดภัยที่คุณ<br>ตรวจสอบได้จริง</h2>
+                    <p class="text-slate-400 mb-10 text-lg leading-relaxed">เราให้ความสำคัญกับความโปร่งใสเป็นอันดับหนึ่ง ทุกขั้นตอนสามารถตรวจสอบได้ มีหลักฐาน และมีกฎหมายรองรับ</p>
+                    
+                    <div class="space-y-8">
+                        <div class="flex gap-5 group">
+                            <div class="w-14 h-14 bg-slate-800 rounded-2xl flex items-center justify-center text-emerald-400 shrink-0 group-hover:bg-emerald-500 group-hover:text-white transition shadow-lg border border-slate-700">
+                                <i data-lucide="lock" class="w-6 h-6"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-xl font-bold mb-2 text-slate-100">Triple Control Security</h4>
+                                <p class="text-slate-400 text-sm leading-relaxed">ยืนยัน 3 ขั้นตอน: ธนาคาร + บริษัท + ลูกค้า (2FA) ป้องกันการทุจริตแบบ Real-time</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-5 group">
+                            <div class="w-14 h-14 bg-slate-800 rounded-2xl flex items-center justify-center text-blue-400 shrink-0 group-hover:bg-brandBlue group-hover:text-white transition shadow-lg border border-slate-700">
+                                <i data-lucide="file-text" class="w-6 h-6"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-xl font-bold mb-2 text-slate-100">Agency Agreement</h4>
+                                <p class="text-slate-400 text-sm leading-relaxed">ดำเนินการถูกต้องตามกฎหมายแพ่งและพาณิชย์ ในฐานะ "ตัวแทน" มีผลผูกพันทางกฎหมาย</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="relative animate-float hidden md:block">
+                    <div class="absolute inset-0 bg-gradient-to-r from-brandBlue to-brandGreen blur-3xl opacity-30 rounded-full"></div>
+                    <div class="bg-slate-800/80 backdrop-blur border border-slate-700 p-10 rounded-[2.5rem] relative z-10 shadow-2xl">
+                        <div class="flex items-center justify-between mb-8 pb-4 border-b border-slate-700">
+                            <span class="text-slate-400 text-sm">Transaction Status</span>
+                            <span class="bg-emerald-500/20 text-emerald-400 px-3 py-1 rounded-full text-xs font-semibold flex items-center gap-2">
+                                <span class="w-2 h-2 bg-emerald-400 rounded-full animate-pulse"></span>
+                                Secured by Depayit
+                            </span>
+                        </div>
+                        <div class="space-y-6 opacity-80">
+                            <div class="flex items-center gap-4">
+                                <div class="w-12 h-12 rounded-full bg-slate-600"></div>
+                                <div class="space-y-3 flex-1">
+                                    <div class="h-2.5 bg-slate-600 rounded-full w-1/3"></div>
+                                    <div class="h-2.5 bg-slate-600 rounded-full w-2/3"></div>
+                                </div>
+                            </div>
+                            <div class="h-32 bg-slate-900/50 rounded-2xl flex flex-col items-center justify-center mt-6 border-2 border-dashed border-slate-600 gap-3">
+                                <i data-lucide="shield-check" class="text-brandBlue w-10 h-10"></i>
+                                <div class="text-center">
+                                    <p class="text-slate-300 text-sm font-medium">เงินอยู่ในบัญชีกลาง</p>
+                                    <p class="text-slate-600 text-xs">(Cashflow Account)</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="faq" class="py-24 bg-white">
+        <div class="max-w-4xl mx-auto px-6 md:px-12">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold text-slate-900 mb-4">คำถามที่พบบ่อย</h2>
+            </div>
+            <div class="space-y-4">
+                <details class="group bg-slate-50 p-6 rounded-2xl cursor-pointer border border-slate-100 hover:border-brandBlue/30 transition">
+                    <summary class="flex justify-between items-center font-bold text-slate-800 list-none">
+                        ผู้ขายจะได้รับเงินตอนไหน?
+                        <span class="transition group-open:rotate-180">
+                            <i data-lucide="chevron-down" class="w-5 h-5 text-slate-400"></i>
+                        </span>
+                    </summary>
+                    <p class="text-slate-600 mt-4 leading-relaxed">
+                        ผู้ขายจะได้รับเงินทันทีที่ผู้ซื้อกดยืนยัน "ได้รับสินค้าแล้ว" หรือเมื่อครบกำหนดระยะเวลาตรวจสอบสินค้า (Auto-release) หากผู้ซื้อไม่แจ้งปัญหาเข้ามา
+                    </p>
+                </details>
+
+                <details class="group bg-slate-50 p-6 rounded-2xl cursor-pointer border border-slate-100 hover:border-brandBlue/30 transition">
+                    <summary class="flex justify-between items-center font-bold text-slate-800 list-none">
+                        ถ้าสินค้ามีปัญหา หรือผู้ขายโกง ทำอย่างไร?
+                        <span class="transition group-open:rotate-180">
+                            <i data-lucide="chevron-down" class="w-5 h-5 text-slate-400"></i>
+                        </span>
+                    </summary>
+                    <p class="text-slate-600 mt-4 leading-relaxed">
+                        ผู้ซื้อสามารถกดปุ่ม "แจ้งปัญหา/ข้อพิพาท" (Dispute) ระบบจะระงับการโอนเงินทันที และ Depayit จะเข้ามาเป็นคนกลางตรวจสอบหลักฐาน
+                    </p>
+                </details>
+
+                <details class="group bg-slate-50 p-6 rounded-2xl cursor-pointer border border-slate-100 hover:border-brandBlue/30 transition">
+                    <summary class="flex justify-between items-center font-bold text-slate-800 list-none">
+                        ต้องดาวน์โหลดแอปหรือไม่?
+                        <span class="transition group-open:rotate-180">
+                            <i data-lucide="chevron-down" class="w-5 h-5 text-slate-400"></i>
+                        </span>
+                    </summary>
+                    <p class="text-slate-600 mt-4 leading-relaxed">
+                        ไม่ต้องดาวน์โหลดครับ Depayit เป็น Web Application สามารถใช้งานผ่านเบราว์เซอร์ (Chrome, Safari) บนมือถือหรือคอมพิวเตอร์ได้ทันที
+                    </p>
+                </details>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-slate-50 border-t border-slate-200 pt-20 pb-10 px-6 md:px-12">
+        <div class="max-w-7xl mx-auto grid md:grid-cols-4 gap-12 mb-16">
+            <div class="col-span-1 md:col-span-2">
+                <div class="flex items-center gap-2 mb-6">
+                    <div class="w-10 h-10 bg-gradient-to-br from-brandBlue to-brandGreen rounded-xl flex items-center justify-center text-white font-bold text-xl">D</div>
+                    <span class="text-2xl font-bold text-slate-800">DePayit</span>
+                </div>
+                <p class="text-slate-500 text-sm leading-relaxed max-w-sm mb-6">
+                    แพลตฟอร์ม P2P Soft Escrow ที่ช่วยให้การซื้อขายออนไลน์ปลอดภัย โปร่งใส และยุติธรรม สำหรับทุกคน ขับเคลื่อนด้วยเทคโนโลยีและความไว้วางใจ
+                </p>
+                <div class="flex gap-4">
+                    <a href="#" class="w-10 h-10 bg-white rounded-full flex items-center justify-center shadow-sm text-slate-400 hover:text-brandBlue transition"><i data-lucide="facebook" class="w-5 h-5"></i></a>
+                    <a href="#" class="w-10 h-10 bg-white rounded-full flex items-center justify-center shadow-sm text-slate-400 hover:text-brandGreen transition"><i data-lucide="message-circle" class="w-5 h-5"></i></a>
+                </div>
+            </div>
+            
+            <div>
+                <h4 class="font-bold text-slate-900 mb-6">บริการของเรา</h4>
+                <ul class="space-y-4 text-sm text-slate-500">
+                    <li><a href="#" class="hover:text-brandBlue transition inline-flex items-center gap-2"><span class="w-1.5 h-1.5 bg-slate-300 rounded-full"></span> สร้างรายการซื้อขาย</a></li>
+                    <li><a href="#" class="hover:text-brandBlue transition inline-flex items-center gap-2"><span class="w-1.5 h-1.5 bg-slate-300 rounded-full"></span> ตรวจสอบสถานะ</a></li>
+                    <li><a href="#pricing" class="hover:text-brandBlue transition inline-flex items-center gap-2"><span class="w-1.5 h-1.5 bg-slate-300 rounded-full"></span> อัตราค่าบริการ</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-bold text-slate-900 mb-6">ช่วยเหลือ</h4>
+                <ul class="space-y-4 text-sm text-slate-500">
+                    <li><a href="#" class="hover:text-brandBlue transition inline-flex items-center gap-2"><span class="w-1.5 h-1.5 bg-slate-300 rounded-full"></span> แจ้งปัญหา/ข้อพิพาท</a></li>
+                    <li><a href="terms.html" class="hover:text-brandBlue transition inline-flex items-center gap-2"><span class="w-1.5 h-1.5 bg-slate-300 rounded-full"></span> เงื่อนไขการใช้งาน</a></li>
+                    <li><a href="#" class="hover:text-brandBlue transition inline-flex items-center gap-2"><span class="w-1.5 h-1.5 bg-slate-300 rounded-full"></span> ติดต่อเรา</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="max-w-7xl mx-auto pt-8 border-t border-slate-200 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-slate-400">
+            <p>&copy; 2025 Depayit. All rights reserved.</p>
+            <p>ดำเนินการภายใต้สัญญาตัวแทน (Agency Agreement) ตามประมวลกฎหมายแพ่งและพาณิชย์</p>
+        </div>
+    </footer>
+
+    <div id="video-modal" class="fixed inset-0 z-50 hidden bg-slate-900/90 backdrop-blur-md flex items-center justify-center p-4 md:p-8 transition-all duration-300 opacity-0">
+        <div class="relative w-full max-w-5xl bg-black rounded-3xl shadow-2xl overflow-hidden border border-slate-700">
+            <button onclick="toggleVideo()" class="absolute top-4 right-4 z-10 p-2 bg-black/50 hover:bg-white/20 text-white rounded-full transition backdrop-blur-sm">
+                <i data-lucide="x" class="w-6 h-6"></i>
+            </button>
+            <div class="aspect-video w-full bg-black flex items-center justify-center">
+                <iframe class="w-full h-full" 
+                    src="https://www.youtube.com/embed/4wsrLTzgtS0?autoplay=0&rel=0&enablejsapi=1" 
+                    title="Depayit Introduction" frameborder="0" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                    allowfullscreen>
+                </iframe>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        lucide.createIcons();
+
+        const menuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+
+        function toggleMenu() {
+            const isHidden = mobileMenu.classList.contains('hidden');
+            if (isHidden) {
+                mobileMenu.classList.remove('hidden');
+                // Animation logic can be added here
+            } else {
+                mobileMenu.classList.add('hidden');
+            }
+        }
+
+        menuBtn.addEventListener('click', toggleMenu);
+
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                if (!mobileMenu.classList.contains('hidden')) {
+                    toggleMenu();
+                }
+            });
+        });
+
+        const modal = document.getElementById('video-modal');
+        
+        function toggleVideo() {
+            const iframe = modal.querySelector('iframe');
+            if (modal.classList.contains('hidden')) {
+                modal.classList.remove('hidden');
+                setTimeout(() => modal.classList.remove('opacity-0'), 10);
+                document.body.style.overflow = 'hidden';
+            } else {
+                modal.classList.add('opacity-0');
+                setTimeout(() => {
+                    modal.classList.add('hidden');
+                    const tempSrc = iframe.src;
+                    iframe.src = tempSrc; 
+                }, 300);
+                document.body.style.overflow = 'auto';
+            }
+        }
+
+        modal.addEventListener('click', function(e) {
+            if (e.target === this) toggleVideo();
+        });
+
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && !modal.classList.contains('hidden')) toggleVideo();
+        });
+    </script>
+</body>
+</html>
