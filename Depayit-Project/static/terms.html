@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ข้อกำหนดและเงื่อนไข - Depayit</title>
+    <meta name="description" content="ข้อกำหนดและเงื่อนไขการใช้บริการ Depayit แพลตฟอร์มตัวกลาง P2P Soft Escrow">
+
+    <link rel="icon" href="Depayit.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="Depayit.ico" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                fontFamily: {
+                    sans: ['Prompt', 'sans-serif'],
+                },
+                extend: {
+                    colors: {
+                        brandBlue: '#2563EB',
+                        brandGreen: '#10B981',
+                        brandDark: '#0F172A',
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans antialiased">
+
+    <nav class="bg-white border-b border-slate-100 sticky top-0 z-40">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-20 items-center">
+                <a href="index.html" class="flex items-center gap-2 group">
+                    <div class="w-10 h-10 bg-gradient-to-br from-brandBlue to-brandGreen rounded-xl flex items-center justify-center text-white font-bold text-xl shadow-lg shadow-brandBlue/20">
+                        D
+                    </div>
+                    <span class="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-brandBlue to-brandGreen">
+                        DePayit
+                    </span>
+                </a>
+                <a href="index.html" class="text-slate-500 hover:text-brandBlue font-medium flex items-center gap-2 transition">
+                    <i data-lucide="arrow-left" class="w-4 h-4"></i> กลับหน้าหลัก
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="max-w-4xl mx-auto px-4 py-16">
+        
+        <div class="text-center mb-12">
+            <h1 class="text-3xl md:text-4xl font-bold text-slate-900 mb-4">ข้อกำหนดและเงื่อนไขการใช้บริการ</h1>
+            <p class="text-slate-500">อัปเดตล่าสุด: 25 มกราคม 2026</p>
+        </div>
+
+        <div class="bg-white p-8 md:p-12 rounded-3xl shadow-sm border border-slate-200 space-y-10">
+            
+            <section>
+                <h3 class="text-xl font-bold text-slate-900 mb-4 flex items-center gap-2">
+                    <span class="bg-blue-100 text-brandBlue w-8 h-8 rounded-full flex items-center justify-center text-sm">i</span>
+                    บทนำ
+                </h3>
+                <p class="text-slate-600 leading-relaxed">
+                   ข้อตกลงฉบับนี้จัดทำขึ้นเพื่อกำหนดแนวทางในการใช้บริการระหว่างผู้ใช้บริการ (“ผู้ใช้”) และผู้ให้บริการ (“บริษัท ดีเพย์อิท”) โดยผู้ใช้ตกลงที่จะปฏิบัติตามเงื่อนไขและข้อกำหนดที่ระบุไว้ในเอกสารนี้อย่างเคร่งครัด
+                </p>
+            </section>
+
+            <hr class="border-slate-100">
+
+            <section>
+                <h3 class="text-xl font-bold text-slate-900 mb-4">1. ข้อกำหนดทั่วไป</h3>
+                <div class="space-y-4 text-slate-600 leading-relaxed">
+                    <p><strong>1.1 วัตถุประสงค์:</strong> ดีเพย์อิท (Depayit) ทำหน้าที่เป็น "ตัวกลางอำนวยความสะดวก" ในการรับและจ่ายเงินสำหรับธุรกรรมซื้อขายสินค้าออนไลน์มือสอง โดยมิได้มีสถานะเป็นธนาคารหรือสถาบันการเงิน เราทำหน้าที่ดูแลธุรกรรมผ่านบัญชี Escrow จนกว่าเงื่อนไขการซื้อขายจะสมบูรณ์</p>
+                    <p><strong>1.2 การยอมรับข้อตกลง:</strong> การใช้งานแพลตฟอร์มถือว่าผู้ใช้ยอมรับข้อตกลงและนโยบายทั้งหมดที่เกี่ยวข้อง</p>
+                </div>
+            </section>
+
+            <section>
+                <h3 class="text-xl font-bold text-slate-900 mb-4">2. การใช้บริการและขอบเขตความรับผิดชอบ</h3>
+                
+                <div class="pl-4 border-l-4 border-brandBlue/20 space-y-6">
+                    <div>
+                        <h4 class="font-bold text-slate-800 mb-2">2.2 กระบวนการทำธุรกรรม (Escrow Model)</h4>
+                        <ul class="list-disc list-inside text-slate-600 space-y-2">
+                            <li><strong>การสร้างธุรกรรม:</strong> ผู้ซื้อหรือผู้ขายกรอกรายละเอียดสินค้าและราคา ระบบจะสร้าง Link สำหรับชำระเงิน (QR Code) และ Link สำหรับติดตามสถานะ</li>
+                            <li><strong>การชำระเงิน:</strong> เงินของผู้ซื้อจะถูกพักไว้ในบัญชี Escrow และระบบจะแจ้งเตือนเมื่อเงินเข้าแล้ว</li>
+                            <li><strong>การจัดส่ง:</strong> ผู้ขายจัดส่งสินค้าและแจ้งเลข Tracking Number เพื่อยืนยันในระบบ</li>
+                            <li><strong>การตรวจสอบและรับเงิน:</strong> เมื่อผู้ซื้อได้รับของและกดยืนยัน (Confirm) หรือเมื่อครบกำหนดเวลา (Timeout 48 ชม.) โดยไม่มีการแจ้งปัญหา ระบบจะโอนเงินให้ผู้ขายอัตโนมัติ (Auto-Release)</li>
+                        </ul>
+                    </div>
+
+                    <div>
+                        <h4 class="font-bold text-slate-800 mb-2">2.3 การระงับข้อพิพาท (Dispute)</h4>
+                        <p class="text-slate-600 mb-2">หากสินค้ามีปัญหา ผู้ซื้อต้องกด "เปิดข้อพิพาท" ภายใน <span class="text-red-600 font-bold">48 ชั่วโมง</span> นับจากสินค้าถึงปลายทาง (อ้างอิงตาม Tracking Number)</p>
+                        <ul class="list-disc list-inside text-slate-600 text-sm">
+                            <li>ต้องแนบหลักฐานภาพถ่าย หมายเลขธุรกรรม (TXID) และระบุเหตุผลชัดเจน</li>
+                            <li>หากไม่ดำเนินการในเวลาที่กำหนด เงินจะถูกโอนให้ผู้ขายตามเงื่อนไข Auto-Release</li>
+                            <li>การตัดสินของบริษัทฯ ถือเป็นที่สิ้นสุด</li>
+                        </ul>
+                    </div>
+
+                    <div>
+                        <h4 class="font-bold text-slate-800 mb-2">2.4 นโยบายการคืนเงินและการส่งสินค้าคืน</h4>
+                        <ul class="list-disc list-inside text-slate-600 space-y-2">
+                            <li><strong>การยกเลิก:</strong> ทำได้ก่อนผู้ขายจัดส่งสินค้า (ได้รับเงินคืนเต็มจำนวน หักค่าธรรมเนียมตามจริง)</li>
+                            <li><strong>การส่งคืนสินค้า:</strong> หากผู้ซื้อชนะข้อพิพาท ต้องส่งสินค้าคืนภายใน <span class="font-bold">7 วันทำการ</span> พร้อมแจ้งเลข Tracking ในระบบ</li>
+                            <li><strong>บทลงโทษ:</strong> ผู้ซื้อที่มีประวัติส่งคืนไม่ตรงหรือทุจริต จะถูกบันทึกในระบบ Blacklist และอาจถูกระงับการใช้งาน[span_15</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <h3 class="text-xl font-bold text-slate-900 mb-4">3. ข้อจำกัดความรับผิด</h3>
+                <p class="text-slate-600 leading-relaxed">
+                   บริษัทฯ ไม่รับผิดชอบต่อคุณภาพสินค้า หรือการผิดสัญญาของคู่ค้า และขอยืนยันสถานะว่า "ไม่ใช่ธนาคาร" หรือผู้ให้บริการรับฝากเงินตามกฎหมาย ผู้ใช้บริการยอมรับความเสี่ยงที่เกี่ยวข้องตามสมควร
+                </p>
+            </section>
+
+            <section>
+                <h3 class="text-xl font-bold text-slate-900 mb-4">4. นโยบายความปลอดภัยและยืนยันตัวตน (KYC/AML)</h3>
+                <div class="bg-slate-50 p-6 rounded-xl border border-slate-100 text-slate-600">
+                    <p class="mb-4">เพื่อให้สอดคล้องกับกฎหมายป้องกันการฟอกเงิน (AML) เรากำหนดระดับการยืนยันตัวตนดังนี้</p>
+                    <ul class="space-y-3">
+                        <li class="flex gap-3">
+                            <span class="bg-blue-100 text-brandBlue px-2 py-0.5 rounded text-xs font-bold h-fit">Tier 1</span>
+                            <span><strong>วงเงิน &lt; 30,000 บาท/ครั้ง:</strong> ยืนยันเบอร์โทรศัพท์และอีเมล</span>
+                        </li>
+                        <li class="flex gap-3">
+                            <span class="bg-blue-100 text-brandBlue px-2 py-0.5 rounded text-xs font-bold h-fit">Tier 2</span>
+                            <span><strong>วงเงิน &lt; 100,000 บาท/ครั้ง:</strong> ยืนยันตัวตนด้วยบัตรประชาชนและรูปถ่าย (Selfie)</span>
+                        </li>
+                        <li class="flex gap-3">
+                            <span class="bg-blue-100 text-brandBlue px-2 py-0.5 rounded text-xs font-bold h-fit">Tier 3</span>
+                            <span><strong>วงเงิน &gt; 100,000 บาท/ครั้ง:</strong> ต้องทำ e-KYC ผ่าน NDID หรือ API ธนาคาร</span>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+
+            <section>
+                <h3 class="text-xl font-bold text-slate-900 mb-4">5. นโยบายข้อมูลส่วนบุคคล (PDPA)</h3>
+                <p class="text-slate-600 leading-relaxed mb-4">
+                    บริษัทเก็บรวบรวมข้อมูลเท่าที่จำเป็น (เช่น ชื่อ, เบอร์โทร, เลขบัญชี) เพื่อการทำธุรกรรมและการยืนยันตัวตนเท่านั้น โดยมีมาตรการรักษาความปลอดภัยข้อมูลตามมาตรฐาน
+                </p>
+                <div class="flex items-start gap-3 p-4 bg-brandBlue/5 rounded-lg border border-brandBlue/10">
+                    <i data-lucide="mail" class="w-5 h-5 text-brandBlue mt-0.5"></i>
+                    <div class="text-sm text-slate-600">
+                        <span class="font-bold text-brandDark">ติดต่อเจ้าหน้าที่คุ้มครองข้อมูล (DPO)</span><br>
+                        หากต้องการใช้สิทธิเกี่ยวกับข้อมูลส่วนบุคคล ติดต่อได้ที่: <a href="mailto:dpo@depayit.co.th" class="text-brandBlue hover:underline">dpo@depayit.co.th</a>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+
+        <div class="mt-8 text-center">
+            <a href="index.html" class="inline-flex items-center gap-2 text-slate-500 hover:text-brandBlue transition font-medium">
+                <i data-lucide="arrow-left" class="w-4 h-4"></i> กลับสู่หน้าหลัก
+            </a>
+        </div>
+    </main>
+
+    <footer class="bg-white border-t border-slate-200 py-8 text-center text-sm text-slate-400">
+        <p>&copy; 2025 Depayit. All rights reserved. | ดำเนินการภายใต้สัญญาตัวแทน (Agency Agreement)</p>
+    </footer>
+
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>

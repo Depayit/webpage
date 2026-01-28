@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+
+<html class="light" lang="th"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Depayit - Check Transaction Status</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&amp;family=Noto+Sans+Thai:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Theme Configuration -->
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#006c75",
+                        "primary-dark": "#005a62",
+                        "secondary": "#ffb347",
+                        "background-light": "#fcfdfd",
+                        "background-dark": "#19292e",
+                        "surface-light": "#ffffff",
+                        "surface-dark": "#203239",
+                    },
+                    fontFamily: {
+                        "display": ["Manrope", "Noto Sans Thai", "sans-serif"],
+                        "body": ["Manrope", "Noto Sans Thai", "sans-serif"],
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "2xl": "1rem", "full": "9999px"},
+                    boxShadow: {
+                        "soft": "0 4px 20px -2px rgba(0, 0, 0, 0.05)",
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .material-symbols-outlined.filled {
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        /* Custom timeline line */
+        .timeline-line {
+            position: absolute;
+            left: 15px; /* Center of the 32px circle approx */
+            top: 36px;
+            bottom: -16px;
+            width: 2px;
+            background-color: #dae6e7;
+            z-index: 0;
+        }
+        .timeline-line.active {
+            background-color: #006c75;
+        }
+        .last-item .timeline-line {
+            display: none;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display text-[#101818] dark:text-gray-100 transition-colors duration-200">
+<div class="relative flex h-full min-h-screen w-full flex-col max-w-md mx-auto bg-background-light dark:bg-background-dark shadow-2xl overflow-x-hidden">
+<!-- Header -->
+<div class="sticky top-0 z-50 flex items-center bg-background-light/95 dark:bg-background-dark/95 backdrop-blur-sm p-4 pb-2 justify-between border-b border-gray-100 dark:border-gray-800">
+<button class="text-[#101818] dark:text-white flex size-12 shrink-0 items-center justify-center rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">
+<span class="material-symbols-outlined">arrow_back_ios_new</span>
+</button>
+<h2 class="text-[#101818] dark:text-white text-lg font-bold leading-tight tracking-[-0.015em] flex-1 text-center pr-12">ตรวจสอบสถานะ</h2>
+</div>
+<!-- Scrollable Content -->
+<main class="flex-1 px-4 pb-32">
+<!-- Instructions -->
+<div class="py-4">
+<p class="text-gray-500 dark:text-gray-400 text-sm font-normal leading-normal">
+                    กรอกเลขที่รายการและ PIN เพื่อดูรายละเอียดและยืนยันการรับสินค้า
+                </p>
+</div>
+<!-- Search Form Card -->
+<div class="bg-surface-light dark:bg-surface-dark rounded-2xl p-5 shadow-soft border border-gray-100 dark:border-gray-700 space-y-4">
+<!-- TXID Input -->
+<div class="flex flex-col gap-2">
+<label class="text-[#101818] dark:text-gray-200 text-sm font-semibold leading-normal">เลขที่รายการ (TXID)</label>
+<div class="relative flex items-center">
+<span class="absolute left-4 text-primary material-symbols-outlined">receipt_long</span>
+<input class="form-input w-full rounded-xl border-gray-200 dark:border-gray-600 bg-gray-50 dark:bg-gray-800 focus:bg-white dark:focus:bg-gray-900 focus:border-primary focus:ring-primary pl-12 h-12 text-base placeholder:text-gray-400 dark:text-white transition-all" placeholder="Ex. TX8839201" type="text" value="TX8839201"/>
+</div>
+</div>
+<!-- PIN Input -->
+<div class="flex flex-col gap-2">
+<label class="text-[#101818] dark:text-gray-200 text-sm font-semibold leading-normal">รหัส PIN</label>
+<div class="relative flex items-center">
+<span class="absolute left-4 text-primary material-symbols-outlined">lock</span>
+<input class="form-input w-full rounded-xl border-gray-200 dark:border-gray-600 bg-gray-50 dark:bg-gray-800 focus:bg-white dark:focus:bg-gray-900 focus:border-primary focus:ring-primary pl-12 pr-12 h-12 text-base placeholder:text-gray-400 dark:text-white transition-all" placeholder="••••••" type="password" value="123456"/>
+<button class="absolute right-0 top-0 h-12 w-12 flex items-center justify-center text-gray-400 hover:text-primary">
+<span class="material-symbols-outlined">visibility</span>
+</button>
+</div>
+</div>
+<!-- Search Button (Inline) -->
+<button class="w-full bg-primary hover:bg-primary-dark text-white font-bold h-12 rounded-xl shadow-lg shadow-primary/20 flex items-center justify-center gap-2 transition-all active:scale-[0.98]">
+<span class="material-symbols-outlined">search</span>
+<span>ค้นหาข้อมูล</span>
+</button>
+</div>
+<!-- Divider / Result Text -->
+<div class="flex items-center gap-3 my-6">
+<div class="h-px bg-gray-200 dark:bg-gray-700 flex-1"></div>
+<span class="text-xs font-medium text-gray-400 uppercase tracking-wider">ผลการค้นหา</span>
+<div class="h-px bg-gray-200 dark:bg-gray-700 flex-1"></div>
+</div>
+<!-- Transaction Details Card -->
+<div class="bg-surface-light dark:bg-surface-dark rounded-2xl shadow-soft border border-gray-100 dark:border-gray-700 overflow-hidden relative">
+<!-- Decorative top border -->
+<div class="h-1.5 w-full bg-gradient-to-r from-primary to-teal-400"></div>
+<div class="p-5">
+<!-- Product Header -->
+<div class="flex justify-between items-start mb-6">
+<div>
+<h3 class="text-lg font-bold text-gray-900 dark:text-white leading-snug">iPhone 13 Pro Max</h3>
+<p class="text-sm text-gray-500 dark:text-gray-400">Sierra Blue, 128GB</p>
+<div class="mt-2 inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-gray-100 dark:bg-gray-800 text-xs font-medium text-gray-600 dark:text-gray-300">
+<span class="material-symbols-outlined text-[16px]">storefront</span>
+                                ผู้ขาย: คุณสมชาย (Somchai)
+                            </div>
+</div>
+<div class="text-right">
+<p class="text-xl font-bold text-primary">฿18,500</p>
+<p class="text-xs text-gray-400">ราคารวมค่าจัดส่ง</p>
+</div>
+</div>
+<!-- Timeline -->
+<div class="relative pl-1 py-2 space-y-0">
+<!-- Step 1: Created (Done) -->
+<div class="relative flex gap-4 pb-8">
+<div class="timeline-line active"></div> <!-- Vertical Line -->
+<div class="relative z-10 flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-primary text-white">
+<span class="material-symbols-outlined text-sm font-bold">check</span>
+</div>
+<div class="flex flex-col pt-0.5">
+<span class="text-sm font-bold text-gray-900 dark:text-white">สร้างรายการ</span>
+<span class="text-xs text-gray-500 dark:text-gray-400">10 ก.ค. 2023, 10:30</span>
+</div>
+</div>
+<!-- Step 2: Paid (Done) -->
+<div class="relative flex gap-4 pb-8">
+<div class="timeline-line active"></div> <!-- Vertical Line -->
+<div class="relative z-10 flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-primary text-white">
+<span class="material-symbols-outlined text-sm font-bold">check</span>
+</div>
+<div class="flex flex-col pt-0.5">
+<span class="text-sm font-bold text-gray-900 dark:text-white">ชำระเงินแล้ว</span>
+<span class="text-xs text-gray-500 dark:text-gray-400">เงินอยู่ที่ Depayit (ปลอดภัย)</span>
+</div>
+</div>
+<!-- Step 3: Shipped (Active) -->
+<div class="relative flex gap-4 pb-8">
+<div class="timeline-line"></div> <!-- Vertical Line (Gray for next step) -->
+<!-- Pulse effect for active state -->
+<div class="absolute -left-1 top-[-4px] h-10 w-10 animate-ping rounded-full bg-primary/20"></div>
+<div class="relative z-10 flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-white border-2 border-primary text-primary">
+<span class="material-symbols-outlined filled text-sm">local_shipping</span>
+</div>
+<div class="flex flex-col pt-0.5 w-full">
+<div class="flex justify-between items-start">
+<span class="text-sm font-bold text-primary">จัดส่งแล้ว</span>
+<span class="inline-block rounded px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide bg-primary/10 text-primary">ล่าสุด</span>
+</div>
+<span class="text-xs text-gray-500 dark:text-gray-400 mt-1">Kerry Express: <span class="font-mono text-gray-700 dark:text-gray-300">KER88912300</span></span>
+<button class="mt-2 text-xs text-primary font-semibold flex items-center hover:underline">
+                                    ติดตามพัสดุ
+                                    <span class="material-symbols-outlined text-[14px] ml-0.5">open_in_new</span>
+</button>
+</div>
+</div>
+<!-- Step 4: Completed (Pending) -->
+<div class="relative flex gap-4 last-item">
+<div class="timeline-line"></div>
+<div class="relative z-10 flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-gray-100 dark:bg-gray-800 border border-gray-300 dark:border-gray-600 text-gray-400">
+<span class="material-symbols-outlined text-sm">inventory_2</span>
+</div>
+<div class="flex flex-col pt-0.5">
+<span class="text-sm font-medium text-gray-400 dark:text-gray-500">เสร็จสมบูรณ์</span>
+<span class="text-xs text-gray-400 dark:text-gray-600">รอผู้ซื้อกดยืนยัน</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Security Badge inside Card -->
+<div class="bg-gray-50 dark:bg-gray-800/50 p-3 border-t border-gray-100 dark:border-gray-700 flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-green-600 text-[18px]">verified_user</span>
+<span class="text-xs text-gray-500 dark:text-gray-400">ธุรกรรมนี้ได้รับการคุ้มครองโดย Depayit Soft Escrow</span>
+</div>
+</div>
+</main>
+<!-- Sticky Action Footer -->
+<div class="fixed bottom-0 left-0 w-full bg-surface-light/90 dark:bg-surface-dark/90 backdrop-blur-md border-t border-gray-100 dark:border-gray-800 p-4 pb-8 z-40">
+<div class="max-w-md mx-auto flex flex-col gap-3">
+<!-- Primary Action -->
+<button class="w-full bg-primary hover:bg-primary-dark text-white text-lg font-bold h-14 rounded-xl shadow-lg shadow-primary/25 flex items-center justify-center gap-2 transition-transform active:scale-[0.98]">
+<span class="material-symbols-outlined">check_circle</span>
+                    ยืนยันการรับของ
+                </button>
+<!-- Secondary/Dispute Action -->
+<button class="w-full bg-transparent border border-gray-200 dark:border-gray-700 hover:bg-orange-50 dark:hover:bg-orange-900/10 text-secondary hover:text-orange-600 font-semibold h-12 rounded-xl flex items-center justify-center gap-2 transition-colors">
+<span class="material-symbols-outlined text-[20px]">report_problem</span>
+                    แจ้งปัญหา / ขอคืนเงิน
+                </button>
+</div>
+</div>
+</div>
+</body></html>
