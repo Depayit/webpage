@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+
+<html class="light" lang="th"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Transaction Summary</title>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&amp;family=Noto+Sans+Thai:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#006c75",
+                        "background-light": "#fcfdfd",
+                        "background-dark": "#19292e",
+                    },
+                    fontFamily: {
+                        "display": ["Manrope", "Noto Sans Thai", "sans-serif"],
+                        "mono": ["Manrope", "monospace"] // Using Manrope for numbers as requested, ensuring mono-like alignment
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "2xl": "1rem", "full": "9999px"},
+                    boxShadow: {
+                        'soft': '0 4px 20px -2px rgba(0, 0, 0, 0.05)',
+                        'card': '0 0 0 1px rgba(0,0,0,0.03), 0 2px 8px rgba(0,0,0,0.04)',
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .ticket-jagged {
+            background-image: linear-gradient(135deg, transparent 50%, white 50%), linear-gradient(45deg, white 50%, transparent 50%);
+            background-position: bottom;
+            background-repeat: repeat-x;
+            background-size: 12px 12px;
+            height: 12px;
+            width: 100%;
+        }
+        .dark .ticket-jagged {
+            background-image: linear-gradient(135deg, transparent 50%, #23343a 50%), linear-gradient(45deg, #23343a 50%, transparent 50%);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display antialiased min-h-screen flex flex-col text-[#101818] dark:text-white overflow-x-hidden">
+<!-- Top Navigation -->
+<div class="flex items-center p-4 justify-between sticky top-0 z-10 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-md">
+<button class="flex items-center justify-center size-10 rounded-full hover:bg-gray-100 dark:hover:bg-white/5 transition-colors text-[#101818] dark:text-white">
+<span class="material-symbols-outlined">close</span>
+</button>
+<div class="text-xs font-bold uppercase tracking-widest text-primary/80 dark:text-primary/60">Depayit Escrow</div>
+<div class="size-10"></div> <!-- Spacer for balance -->
+</div>
+<div class="flex-1 flex flex-col px-4 pb-8 max-w-md mx-auto w-full">
+<!-- Success Header -->
+<div class="flex flex-col items-center pt-2 pb-8 text-center animate-in fade-in slide-in-from-bottom-4 duration-700">
+<div class="relative mb-4 group">
+<div class="absolute inset-0 bg-primary/20 rounded-full blur-xl scale-150 opacity-50 dark:opacity-30"></div>
+<div class="relative size-20 rounded-full bg-gradient-to-br from-[#e0f2f1] to-white dark:from-[#004d40] dark:to-[#00695c] shadow-soft flex items-center justify-center">
+<span class="material-symbols-outlined text-[40px] text-primary dark:text-teal-200">check_circle</span>
+</div>
+</div>
+<h1 class="text-2xl font-bold mb-1 tracking-tight">สร้างรายการสำเร็จ</h1>
+<p class="text-gray-500 dark:text-gray-400 text-sm">Transaction Created Successfully</p>
+</div>
+<!-- Digital Receipt Card -->
+<div class="relative mb-8 group/card">
+<!-- Card Body -->
+<div class="bg-white dark:bg-[#23343a] rounded-t-2xl shadow-card dark:shadow-none border border-gray-100 dark:border-white/5 overflow-hidden relative z-0">
+<!-- Status Stripe -->
+<div class="h-1.5 w-full bg-gradient-to-r from-primary to-teal-400"></div>
+<div class="p-6 pb-8 space-y-6">
+<!-- TXID Section -->
+<div class="flex flex-col gap-1.5">
+<span class="text-[11px] font-bold text-gray-400 dark:text-gray-500 uppercase tracking-widest">รหัสธุรกรรม (TXID)</span>
+<div class="flex items-baseline justify-between">
+<span class="text-2xl font-bold font-mono tracking-tight text-[#101818] dark:text-white selection:bg-primary/20">TX-8842-991A</span>
+<span class="size-2 rounded-full bg-emerald-400 animate-pulse"></span>
+</div>
+</div>
+<!-- Divider -->
+<div class="h-px bg-gray-100 dark:bg-white/10 w-full border-b border-dashed border-gray-300 dark:border-gray-600"></div>
+<!-- PIN Section -->
+<div class="flex flex-col gap-1.5">
+<div class="flex justify-between items-center">
+<span class="text-[11px] font-bold text-gray-400 dark:text-gray-500 uppercase tracking-widest">รหัสผ่าน (PIN)</span>
+<div class="flex items-center gap-1 bg-amber-50 dark:bg-amber-900/30 border border-amber-100 dark:border-amber-700/50 px-2 py-0.5 rounded text-[10px] font-bold text-amber-600 dark:text-amber-400">
+<span class="material-symbols-outlined text-[10px]">lock</span>
+<span>ลับเฉพาะ</span>
+</div>
+</div>
+<div class="flex items-center justify-between group/pin bg-gray-50 dark:bg-[#1c2a30] p-3 rounded-lg border border-transparent focus-within:border-primary/30 transition-colors">
+<span class="text-3xl font-mono font-bold tracking-[0.2em] text-[#101818] dark:text-white leading-none mt-1">••••</span>
+<button class="flex items-center justify-center size-10 rounded-full hover:bg-gray-200 dark:hover:bg-white/10 text-gray-400 hover:text-primary transition-all active:scale-95">
+<span class="material-symbols-outlined">visibility</span>
+</button>
+</div>
+</div>
+<!-- Warning Alert -->
+<div class="flex gap-3 bg-red-50/50 dark:bg-red-900/10 p-3 rounded-lg border border-red-100 dark:border-red-900/30">
+<span class="material-symbols-outlined text-red-500 dark:text-red-400 text-lg shrink-0 mt-0.5">warning</span>
+<div class="space-y-0.5">
+<p class="text-xs font-bold text-red-800 dark:text-red-200">ห้ามทำหาย!</p>
+<p class="text-[11px] leading-relaxed text-red-600/80 dark:text-red-300/70">ใช้สำหรับถอนเงินหรือแก้ไขรายการ<br/>Used for withdrawing funds or editing.</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Jagged Edge (CSS Trick for Receipt Look) -->
+<div class="relative h-3 w-full overflow-hidden -mt-[1px] z-10 drop-shadow-sm">
+<div class="ticket-jagged"></div>
+</div>
+<!-- Receipt Shadow reflection -->
+<div class="absolute -bottom-2 left-4 right-4 h-4 bg-black/5 blur-md rounded-[100%] z-[-1]"></div>
+</div>
+<!-- Sharing Section -->
+<div class="space-y-3 mt-2">
+<h3 class="text-sm font-bold text-[#101818] dark:text-white px-1">แชร์ลิงก์ธุรกรรม (Share Links)</h3>
+<!-- Buyer Link -->
+<div class="bg-white dark:bg-[#23343a] p-1 rounded-xl shadow-sm border border-gray-100 dark:border-white/5 flex items-center pr-2 group transition-all hover:border-primary/30 hover:shadow-md">
+<div class="size-14 rounded-lg bg-[#e3f2fd] dark:bg-blue-900/20 flex flex-col items-center justify-center gap-1 text-blue-600 dark:text-blue-400 shrink-0 m-1">
+<span class="material-symbols-outlined text-xl">shopping_bag</span>
+<span class="text-[9px] font-bold uppercase">Buyer</span>
+</div>
+<div class="flex-1 min-w-0 px-3 py-1">
+<p class="text-xs font-bold text-[#101818] dark:text-white mb-0.5">สำหรับผู้ซื้อ</p>
+<p class="text-xs text-gray-400 dark:text-gray-500 font-mono truncate">depayit.com/p/8842...</p>
+</div>
+<div class="flex gap-1">
+<button aria-label="Copy Buyer Link" class="size-9 flex items-center justify-center rounded-lg hover:bg-gray-100 dark:hover:bg-white/10 text-gray-500 hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-lg">content_copy</span>
+</button>
+<button aria-label="Share Buyer Link" class="size-9 flex items-center justify-center rounded-lg hover:bg-gray-100 dark:hover:bg-white/10 text-gray-500 hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-lg">ios_share</span>
+</button>
+</div>
+</div>
+<!-- Seller Link -->
+<div class="bg-white dark:bg-[#23343a] p-1 rounded-xl shadow-sm border border-gray-100 dark:border-white/5 flex items-center pr-2 group transition-all hover:border-primary/30 hover:shadow-md">
+<div class="size-14 rounded-lg bg-[#f3e5f5] dark:bg-purple-900/20 flex flex-col items-center justify-center gap-1 text-purple-600 dark:text-purple-400 shrink-0 m-1">
+<span class="material-symbols-outlined text-xl">storefront</span>
+<span class="text-[9px] font-bold uppercase">Seller</span>
+</div>
+<div class="flex-1 min-w-0 px-3 py-1">
+<p class="text-xs font-bold text-[#101818] dark:text-white mb-0.5">สำหรับผู้ขาย</p>
+<p class="text-xs text-gray-400 dark:text-gray-500 font-mono truncate">depayit.com/s/991A...</p>
+</div>
+<div class="flex gap-1">
+<button aria-label="Copy Seller Link" class="size-9 flex items-center justify-center rounded-lg hover:bg-gray-100 dark:hover:bg-white/10 text-gray-500 hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-lg">content_copy</span>
+</button>
+<button aria-label="Share Seller Link" class="size-9 flex items-center justify-center rounded-lg hover:bg-gray-100 dark:hover:bg-white/10 text-gray-500 hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-lg">ios_share</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Footer Actions -->
+<div class="mt-auto pt-8 flex flex-col gap-3">
+<button class="w-full bg-primary text-white py-4 rounded-xl font-bold text-base shadow-lg shadow-primary/25 hover:bg-[#005a61] hover:shadow-primary/40 hover:-translate-y-0.5 transition-all active:translate-y-0 active:shadow-none flex items-center justify-center gap-2">
+<span>เสร็จสิ้น (Done)</span>
+</button>
+<button class="w-full bg-transparent text-primary dark:text-teal-400 py-3 rounded-xl font-bold text-sm hover:bg-primary/5 dark:hover:bg-white/5 transition-colors flex items-center justify-center gap-2 border border-transparent hover:border-primary/10">
+<span class="material-symbols-outlined text-xl">screenshot_monitor</span>
+<span>บันทึกเป็นรูปภาพ (Save Image)</span>
+</button>
+</div>
+</div>
+</body></html>
