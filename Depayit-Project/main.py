@@ -117,4 +117,3 @@ def update_shipping(tx_id: str, data: ShippingUpdate):
         "status": "SHIPPED",
         "auto_release": "เริ่มนับถอยหลัง 48 ชม."
     }
-    }
